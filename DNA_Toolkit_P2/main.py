@@ -20,3 +20,5 @@ print(f"3' {colored(reverse_complement(DNAStr))} 5'\n")
 print(f'[5] + GC Content: {gc_content(DNAStr)}%\n')
 print(f'[6] + GC Content in Subsequence k=5: '
       f'{gc_content_sebsec(DNAStr, k = 5)}\n')
+
+print(f'[7] + Aminoacids Sequence from DNA: {translate_seq(DNAStr)}\n')

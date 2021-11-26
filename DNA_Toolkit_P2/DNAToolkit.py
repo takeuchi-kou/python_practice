@@ -36,3 +36,7 @@ def gc_content_sebsec(seq, k=20):
         subseq = seq[i:i + k]
         res.append(gc_content(subseq))
     return res
+
+def translate_seq(seq, init_pos=0):
+    """Translates a  DNA sequence into an aminoacid sequence"""
+    return [DNA_Codons[seq[pos:pos + 3]] for pos in range(init_pos, len(seq) - 2, 3)]
