@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DNA_Toolkit_P2.iml" filepath="$PROJECT_DIR$/.idea/DNA_Toolkit_P2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dna-toolset-master/.idea/dna-toolset-master.iml" filepath="$PROJECT_DIR$/../dna-toolset-master/.idea/dna-toolset-master.iml" />
     </modules>
   </component>
 </project>
