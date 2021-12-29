@@ -161,3 +161,31 @@ class BoyerMoore(object):
     def match_skip(self):
         """ Return amount to shift in case where P matches T """
         return len(self.small_l_prime) - self.small_l_prime[1]
+
+
+def boyer_moore(p,p_bm,t):
+    """p is pattern,p_bm is the preprocessing of pattern, t is the text"""
+    i = 0   # keep tracking where we are in the text
+    occurrences = []   #where p matches t
+    while i < len(t) - len(p) + 1:
+        shift = 1   # the amount that going to move along
+        mismatched = False
+        for j in range(len(p)-1, -1, -1):   # compare from right to left
+            if not p[j] == t[i+j]:
+                skip_bc = p_bm.bad_character_rule(j,t[i+j])
+                skip_gs = p_bm.good_suffix_rule(j)
+                shift = max(skip_gs,skip_bc)
+                mismatched = True
+                break
+        if not mismatched:
+            occurrences.append(i)
+            skip_gs = p_bm.match_skip()
+            shift = max(shift,skip_gs)
+        i += shift
+    return occurrences
+
+
+t = 'GCTACGATCTAGAATCTA'
+p = 'TCTA'
+p_bm = BoyerMoore(p)
+print(boyer_moore(p,p_bm,t))
