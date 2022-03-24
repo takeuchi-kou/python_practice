@@ -29,3 +29,23 @@ def scs(ss):
         if shortest_sup is None or len(sup) < len(shortest_sup):
             shortest_sup = sup
     return shortest_sup
+
+def pick_maximal_overlap(reads, k):
+    reada, readb = None, None
+    best_olen = 0
+    for a,b in itertools.permutations(read,2):
+        olen = overlap(a, b, min_length=k)
+        if olen > best_olen:
+            reada, readb = a, b
+            best_olen = olen
+    return reada, readb, best_olen
+
+def greedy_scs(reads, k):
+    read_a, read_b, olen = pick_maximal_overlap(reads,k)
+    while olen>:
+        reads.remove(read_a)
+        reads.remove(read_b)
+        reads.append(read_a + read_b[olen:])
+        read_a, read_b, olen = pick_maximal_overlap(reads, k)
+    return ''.join(reads)
+
